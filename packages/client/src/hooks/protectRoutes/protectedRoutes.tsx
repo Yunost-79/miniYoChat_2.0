@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import useAuthStore from '../../zustand/authStore';
+import useAuthStore from '../../zustand/useAuthStore';
 
 import { EMainPaths } from '../../types/Enum';
 

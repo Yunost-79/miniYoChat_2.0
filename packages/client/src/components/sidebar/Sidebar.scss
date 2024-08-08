@@ -1,0 +1,26 @@
+.sidebar_component {
+  height: 100%;
+  padding: 20px;
+
+  .sidebar_header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .owner_info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 10px;
+
+      .owner_avatar {
+        img {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}

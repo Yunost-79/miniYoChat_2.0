@@ -1,19 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-$WHITE_COLOR: #f5f7f8;
-$BLACK_COLOR: #000000;
-$SECONDARY_BLACK_COLOR: #222222;
-$MAIN_PRIMAL_GREY_COLOR: #45474b;
-$MAIN_SECONDARY_GREY_COLOR: #ccc;
-$MAIN_PRIMARY_YELLOW_COLOR: #f4ce14;
-$MAIN_SECONDARY_YELLOW_COLOR: rgba(244, 206, 20, 0.6);
-$MAIN_INVISIBILITY_YELLOW_COLOR: rgba(244, 206, 20, 0);
-$MAIN_VISIBILITY_YELLOW_COLOR: rgba(244, 206, 20, 1);
-$MAIN_DROPDOWN_YELLOW_COLOR: rgba(244, 206, 20, 0.3);
-$MAIN_PRIMAL_SAGE_COLOR: #495e57;
-$MAIN_SECONDARY_SAGE_COLOR: #506961;
-$MAIN_LIGHT_SAGE_COLOR: #627e75;
-$MAIN_DARK_SAGE_COLOR: #3a4b45;
+$WHITE: #fff;
+$BLACK: #000;
+$NOTIFICATION_RED: #de0b51;
+$MINT_GREEN: #14cc8f;
+$ERROR: #d32f2f;
+
+$DARK_PRIMARY_GREEN: #0d1a1a;
+$DARK_SECONDARY_GREEN: rgba(31, 38, 38, 0.9);
+$DARK_BORDER_GREY: #2d3838;
+$DARK_INPUT_GREEN: #1f2626;
+$DARK_HALF_GREEN: rgba(13, 26, 26, 0.8);
+$DARK_HOVER_GREEN: #2d3838;
+$DARK_TITLE_TEXT: #f7faf9;
+$DARK_SUBTITLE_TEXT: #a3bfba;
+
+$LIGHT_PRIMARY_WHITE: #f7faf9;
+$LIGHT_SECONDARY_WHITE: rgba(247, 250, 248, 0.9);
+$LIGHT_BORDER_GREY: #d7e5de;
+$LIGHT_INPUT_WHITE: #fff;
+$LIGHT_HALF_WHITE: rgba(255, 255, 255, 0.7);
+$LIGHT_HOVER_WHITE: #e6f0ed;
+$LIGHT_TITLE_TEXT: #1f2626;
+$LIGHT_SUBTITLE_TEXT: #7b9999;
+
+//  ========== Local variables ==========
+$light_background_gradient: linear-gradient(70deg, rgb(79, 183, 131) 15%, rgb(254, 235, 151) 97%);
+$dark_background_gradient: linear-gradient(112.1deg, rgba(32, 38, 57, 1) 11.4%, rgba(63, 76, 119, 1) 70.2%);
 
 html,
 body,
@@ -114,11 +127,9 @@ li {
 body {
   height: 100%;
   font-family: 'Poppins', sans-serif;
-  background-color: $WHITE_COLOR;
-}
+  background: $dark_background_gradient;
 
-.App {
-  max-width: 1920px;
-  max-height: 100vh;
-  margin: 0 auto;
+  &.light {
+    background: $light_background_gradient;
+  }
 }

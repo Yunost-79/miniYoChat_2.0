@@ -1,17 +1,26 @@
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import SignUp from './pages/signup/SignUp';
 
+import { useCustomizeModesStore } from './zustand/customModes/useCustomizeModes';
+
 import usePrivateRoutes from './hooks/protectRoutes/protectedRoutes';
 
 import { EMainPaths } from './types/Enum';
 
-import './index.scss';
+import './App.scss';
 
 const App = () => {
   const { ProtectedRoute, AuthRoute } = usePrivateRoutes();
+
+  const { isLightMode } = useCustomizeModesStore();
+
+  useEffect(() => {
+    document.body.classList.toggle('light', isLightMode);
+  }, [isLightMode]);
 
   return (
     <div className="App">
