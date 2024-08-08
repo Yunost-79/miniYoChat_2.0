@@ -7,6 +7,6 @@
     "packages/*"
   ],
   "dependencies": {
-    "typescript": "^5.5.4"
+    "typescript": "^5.2.2"
   }
 }
