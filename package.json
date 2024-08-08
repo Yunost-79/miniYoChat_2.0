@@ -7,6 +7,10 @@
     "packages/*"
   ],
   "dependencies": {
-    "typescript": "^5.2.2"
+    "formik": "^2.4.6",
+    "react-router-dom": "^6.26.0",
+    "typescript": "^5.2.2",
+    "yup": "^1.4.0",
+    "zustand": "^4.5.4"
   }
 }
