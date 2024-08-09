@@ -1,9 +1,10 @@
 @import '../../';
 
 .test_settings {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
+  z-index: 100;
   display: flex;
   gap: 5px;
   transition: 0.3s ease;

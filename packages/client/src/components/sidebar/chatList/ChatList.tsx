@@ -1,5 +1,5 @@
-import { useLightModeStore } from '../../zustand/customModes/useLightModeStore';
-import ChatListItem from './ChatListItem';
+import { useLightModeStore } from '../../../zustand/customModes/useLightModeStore';
+import ChatListItem from './chatListItem/ChatListItem';
 
 const ChatList = () => {
   const { isLightMode } = useLightModeStore();

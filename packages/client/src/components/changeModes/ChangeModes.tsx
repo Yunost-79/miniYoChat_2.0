@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFullscreenModeStore } from '../../zustand/customModes/useFullscreenModeStore';
 import { useLightModeStore } from '../../zustand/customModes/useLightModeStore';
-import { useShowFooterStore } from '../../zustand/customModes/useShowFooterStore';
+import { useShowHeaderStore } from '../../zustand/customModes/useShowHeaderStore';
 
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
@@ -13,7 +13,16 @@ import './ChangeModes.scss';
 const ChangeModes = () => {
   const { isLightMode, setLightMode } = useLightModeStore();
   const { isFullscreenMode, setFullscreenMode } = useFullscreenModeStore();
-  const { isShowFooter, setShowFooter } = useShowFooterStore();
+  const { setShowHeader } = useShowHeaderStore();
+
+  // Timer for show Header component
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setShowHeader(false);
+  //   }, 5000);
+
+  //   return () => clearTimeout(timer);
+  // }, [isShowHeader, setShowHeader]);
 
   return (
     <div className={`test_settings ${isLightMode ? 'light' : ''}`}>
@@ -23,7 +32,7 @@ const ChangeModes = () => {
       <button className="test_fullscreen_mode" onClick={() => setFullscreenMode(!isFullscreenMode)}>
         {isFullscreenMode ? <FullscreenExitIcon /> : <FullscreenIcon />}
       </button>
-      <button className="test_site_name_mode" onClick={() => setShowFooter(!isShowFooter)}>
+      <button className="test_site_name_mode" onClick={() => setShowHeader(true)}>
         <MoreVertIcon />
       </button>
     </div>

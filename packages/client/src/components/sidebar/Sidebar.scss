@@ -54,23 +54,29 @@
     }
 
     .chat_list {
+      position: relative;
       flex: 1;
       display: flex;
       flex-direction: column;
       margin-top: 12px;
       width: 100%;
-      overflow-y: hidden;
+      // overflow-y: hidden;
       position: relative;
       transition: 0.2s linear;
+      overflow-y: scroll;
 
       &:hover {
-        overflow-y: scroll;
+        // overflow-y: scroll;
         .chat_list_item {
           margin-right: 0;
         }
       }
 
       &::-webkit-scrollbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+
         width: 12px;
         transition: opacity 0.2s linear;
       }
@@ -110,7 +116,6 @@
         align-items: center;
         gap: 15px;
         padding: 12px;
-        margin-right: 12px;
         border-radius: 8px;
         transition: 0.1s linear;
         cursor: pointer;

@@ -1,10 +1,9 @@
-import SidebarHeader from './SidebarHeader';
-import ChatList from '../chatList/ChatList';
+import SidebarHeader from './sidebarHeader/SidebarHeader';
+import ChatList from './chatList/ChatList';
 
 import './Sidebar.scss';
 
 const Sidebar = () => {
-
   return (
     <div className="sidebar_component">
       <SidebarHeader />

@@ -1,4 +1,4 @@
-import Search from '../UI/Search/Search';
+import SearchInput from '../../UI/SearchInput/SearchInput';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -19,7 +19,7 @@ const SidebarHeader = () => {
         </div>
       </div>
       <div className="search">
-        <Search />
+        <SearchInput />
       </div>
     </div>
   );

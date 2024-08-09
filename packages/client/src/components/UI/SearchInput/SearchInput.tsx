@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { IconButton, InputBase, Paper } from '@mui/material';
 
 import { useLightModeStore } from '../../../zustand/customModes/useLightModeStore';
@@ -5,10 +7,9 @@ import { useLightModeStore } from '../../../zustand/customModes/useLightModeStor
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 
-import './Search.scss';
-import { useState } from 'react';
+import './SearchInput.scss';
 
-const Search = () => {
+const SearchInput = () => {
   const [value, setValue] = useState<string>('');
 
   const { isLightMode } = useLightModeStore();
@@ -38,4 +39,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default SearchInput;

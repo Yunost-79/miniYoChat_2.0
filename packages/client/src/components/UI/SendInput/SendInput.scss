@@ -1,0 +1,101 @@
+@import '../../../index.scss';
+
+.send_input {
+  width: 100%;
+
+  &.light {
+    form {
+      border: 2px solid $LIGHT_HOVER_WHITE;
+      background-color: $LIGHT_PRIMARY_WHITE;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+      .upload_icon {
+        color: $LIGHT_SUBTITLE_TEXT;
+
+        &:hover {
+          color: $LIGHT_TITLE_TEXT;
+        }
+      }
+
+      .input_item {
+        color: $LIGHT_TITLE_TEXT;
+      }
+
+      .send_button {
+        color: $LIGHT_TITLE_TEXT;
+
+        &:hover {
+          .send_icon {
+            color: $LIGHT_TITLE_TEXT;
+          }
+        }
+        .send_icon {
+          color: $LIGHT_PRIMARY_WHITE;
+        }
+      }
+    }
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: none;
+    border: 2px solid $DARK_HOVER_GREEN;
+    background-color: $DARK_PRIMARY_GREEN;
+    transition: 0.2s ease;
+
+    &:focus-within {
+      border: 2px solid $DARK_SUBTITLE_TEXT;
+    }
+
+    .upload_icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $DARK_SUBTITLE_TEXT;
+      cursor: pointer;
+      transition: 0.3s ease;
+
+      &:hover {
+        color: $DARK_TITLE_TEXT;
+      }
+    }
+
+    .input_item {
+      color: $DARK_TITLE_TEXT;
+      width: 100%;
+    }
+
+    .send_button {
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $MINT_GREEN;
+      color: $DARK_SUBTITLE_TEXT;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+
+      &:hover {
+        .send_icon {
+          color: $DARK_TITLE_TEXT;
+        }
+      }
+
+      .send_icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $DARK_PRIMARY_GREEN;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+    }
+  }
+}
