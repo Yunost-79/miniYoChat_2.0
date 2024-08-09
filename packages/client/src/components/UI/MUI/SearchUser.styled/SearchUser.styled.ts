@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
-
 import { TextField } from '@mui/material';
-
 import { DARK_PRIMARY_GREEN, DARK_SUBTITLE_TEXT, ERROR, WHITE } from '../../../../variables/colors.variables';
 
 export const SearchUser = styled(TextField)({
@@ -35,7 +33,7 @@ export const SearchUser = styled(TextField)({
         },
 
         '& input': {
-          paddingLeft: 15,
+          padding: '5px 5px 5px 15px',
           color: WHITE,
         },
       },
@@ -46,12 +44,16 @@ export const SearchUser = styled(TextField)({
 
     '& .MuiOutlinedInput-root.Mui-focused': {
       '& input': {
-        paddingLeft: 15,
         color: WHITE,
+        padding: '5px 5px 5px 15px',
       },
       '& fieldset': {
         borderColor: WHITE,
         borderRadius: '15px',
+
+        '& legend': {
+          display: 'none',
+        },
       },
     },
 
@@ -59,7 +61,7 @@ export const SearchUser = styled(TextField)({
       transition: '0.3s linear',
 
       '& input': {
-        paddingLeft: 15,
+        padding: '5px 5px 5px 15px',
         color: DARK_SUBTITLE_TEXT,
 
         '&.Mui-error': {
@@ -81,10 +83,15 @@ export const SearchUser = styled(TextField)({
     },
 
     '& .MuiInputLabel-root': {
+      opacity: 1,
       color: DARK_SUBTITLE_TEXT,
-      '&.Mui-focused': {
+      transition: 'color 0.3s ease, transform 0.3s ease',
+
+      '&.Mui-focused, &.MuiFormLabel-filled': {
+        opacity: 0,
         color: WHITE,
       },
+
       '&.Mui-error': {
         color: ERROR,
       },

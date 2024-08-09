@@ -14,11 +14,6 @@
     transition: 0.3s ease;
 
     .container {
-      .footer {
-        background-color: $LIGHT_SECONDARY_WHITE;
-        transition: 0.3s ease;
-      }
-
       .main {
         .sidebar {
           background-color: $LIGHT_SECONDARY_WHITE;
@@ -30,13 +25,6 @@
           transition: 0.3s ease;
         }
       }
-    }
-
-    .test_light_mode,
-    .test_fullscreen_mode,
-    .test_site_name_mode {
-      color: $BLACK;
-      transition: 0.3s ease;
     }
   }
 
@@ -57,21 +45,18 @@
     .footer {
       display: flex;
       flex-direction: column;
-      opacity: 0;
       height: 0;
       overflow: hidden;
       align-items: center;
       justify-content: center;
       width: 100%;
       padding: 0;
-      background-color: $DARK_PRIMARY_GREEN;
-      transition: 0.3s ease;
+      background-color: $MINT_GREEN;
+      transition: 0.1s ease;
 
       &.show {
-        opacity: 1;
-        height: auto;
-        padding: 20px;
-        transition: 0.3s ease;
+        padding: 40px 0;
+        transition: 0.1s ease;
       }
 
       h3 {
@@ -90,42 +75,16 @@
       height: 100%;
 
       .sidebar {
-        flex: 1 1 25%;
+        flex: 1 1 30%;
         background-color: $DARK_SECONDARY_GREEN;
         transition: 0.3s ease;
       }
 
       .message_component {
-        flex: 1 1 75%;
+        flex: 1 1 70%;
         background-color: $DARK_HALF_GREEN;
         transition: 0.3s ease;
       }
     }
-  }
-}
-
-//  ===== Test Switch Light Mode =====
-
-.test_fullscreen_mode {
-  right: 30px;
-}
-
-.test_settings {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  gap: 5px;
-
-  .test_light_mode,
-  .test_fullscreen_mode,
-  .test_site_name_mode {
-    border: none;
-    padding: 5px;
-    outline: none;
-    background-color: transparent;
-    cursor: pointer;
-    color: $WHITE;
-    transition: 0.3s ease;
   }
 }

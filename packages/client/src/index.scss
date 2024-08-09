@@ -128,9 +128,14 @@ html {
   transition: 0.3s easy;
 }
 
+#root {
+  overflow: hidden;
+}
+
 body {
   height: 100%;
   font-family: 'Poppins', sans-serif;
+
   background: $dark_background_gradient;
 
   &.light {
