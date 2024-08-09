@@ -36,6 +36,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     transition: 0.3s ease;
 
     &.fullscreen {
@@ -85,13 +86,13 @@
         flex: 1 1 25%;
         background-color: $DARK_SECONDARY_GREEN;
         border-right: 2px solid $DARK_BORDER_GREY;
-        transition: 0.3s ease;
+        transition: 0.1s ease;
       }
 
       .message_component {
         flex: 1 1 75%;
         background-color: $DARK_HALF_GREEN;
-        transition: 0.3s ease;
+        transition: 0.1s ease;
       }
     }
   }
