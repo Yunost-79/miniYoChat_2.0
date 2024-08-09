@@ -1,4 +1,6 @@
-import { useCustomizeModesStore } from '../../zustand/customModes/useCustomizeModes';
+import { useLightModeStore } from '../../zustand/customModes/useLightModeStore';
+import { useFullscreenModeStore } from '../../zustand/customModes/useFullscreenModeStore';
+import { useShowFooterStore } from '../../zustand/customModes/useShowFooterStore';
 
 import MessageContainer from '../../components/messageContainer/MessageContainer';
 import Sidebar from '../../components/sidebar/Sidebar';
@@ -12,22 +14,24 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import './Home.scss';
 
 const Home = () => {
-  const { isLightMode, setIsLightMode, isChangeSizeScreen, setIsChangeSizeScreen, isShowFooter, setIsShowFooter } = useCustomizeModesStore();
+  const { isLightMode, setLightMode } = useLightModeStore();
+  const { isFullscreenMode, setFullscreenMode } = useFullscreenModeStore();
+  const { isShowFooter, setShowFooter } = useShowFooterStore();
 
   return (
     <div className={`wrapper ${isLightMode ? 'light' : ''}`}>
       <div className="test_settings">
-        <button className="test_light_mode" onClick={() => setIsLightMode(!isLightMode)}>
+        <button className="test_light_mode" onClick={() => setLightMode(!isLightMode)}>
           <EmojiObjectsIcon />
         </button>
-        <button className="test_fullscreen_mode" onClick={() => setIsChangeSizeScreen(!isChangeSizeScreen)}>
-          {isChangeSizeScreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
+        <button className="test_fullscreen_mode" onClick={() => setFullscreenMode(!isFullscreenMode)}>
+          {isFullscreenMode ? <FullscreenExitIcon /> : <FullscreenIcon />}
         </button>
-        <button className="test_site_name_mode" onClick={() => setIsShowFooter(!isShowFooter)}>
+        <button className="test_site_name_mode" onClick={() => setShowFooter(!isShowFooter)}>
           <MoreVertIcon />
         </button>
       </div>
-      <div className={`container ${isChangeSizeScreen ? 'fullscreen' : ''}`}>
+      <div className={`container ${isFullscreenMode ? 'fullscreen' : ''}`}>
         <div className="main">
           <div className="sidebar">
             <Sidebar />

@@ -1,8 +1,8 @@
 import React from 'react';
-import { useCustomizeModesStore } from '../../zustand/customModes/useCustomizeModes';
+import { useShowFooterStore } from '../../zustand/customModes/useShowFooterStore';
 
 const Footer = () => {
-  const { isShowFooter } = useCustomizeModesStore();
+  const { isShowFooter } = useShowFooterStore();
   return (
     <div className={`footer ${isShowFooter ? 'show' : ''}`}>
       <h3>Mini Yo Chat 2.0</h3>

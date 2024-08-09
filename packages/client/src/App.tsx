@@ -5,7 +5,7 @@ import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import SignUp from './pages/signup/SignUp';
 
-import { useCustomizeModesStore } from './zustand/customModes/useCustomizeModes';
+import { useLightModeStore } from './zustand/customModes/useLightModeStore';
 
 import usePrivateRoutes from './hooks/protectRoutes/protectedRoutes';
 
@@ -16,7 +16,7 @@ import './App.scss';
 const App = () => {
   const { ProtectedRoute, AuthRoute } = usePrivateRoutes();
 
-  const { isLightMode } = useCustomizeModesStore();
+  const { isLightMode } = useLightModeStore();
 
   useEffect(() => {
     document.body.classList.toggle('light', isLightMode);

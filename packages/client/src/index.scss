@@ -124,6 +124,10 @@ li {
   box-sizing: border-box;
 }
 
+html {
+  transition: 0.3s easy;
+}
+
 body {
   height: 100%;
   font-family: 'Poppins', sans-serif;

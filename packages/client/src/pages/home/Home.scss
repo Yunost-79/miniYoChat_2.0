@@ -7,27 +7,27 @@
   height: 100%;
   margin: 0 auto;
   color: $DARK_TITLE_TEXT;
-  transition: color 0.3s ease;
+  transition: 0.3s ease;
 
   &.light {
     color: $LIGHT_TITLE_TEXT;
-    transition: color 0.3s ease;
+    transition: 0.3s ease;
 
     .container {
       .footer {
         background-color: $LIGHT_SECONDARY_WHITE;
-        transition: background-color 0.3s ease;
+        transition: 0.3s ease;
       }
 
       .main {
         .sidebar {
           background-color: $LIGHT_SECONDARY_WHITE;
-          transition: background-color 0.3s ease;
+          transition: 0.3s ease;
         }
 
         .message_component {
           background-color: $LIGHT_HALF_WHITE;
-          transition: background-color 0.3s ease;
+          transition: 0.3s ease;
         }
       }
     }
@@ -36,7 +36,7 @@
     .test_fullscreen_mode,
     .test_site_name_mode {
       color: $BLACK;
-      transition: color 0.3s ease;
+      transition: 0.3s ease;
     }
   }
 
@@ -46,12 +46,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: width 0.3s ease, height 0.3s ease;
+    transition: 0.3s ease;
 
     &.fullscreen {
       width: 100%;
       height: 100%;
-      transition: width 0.3s ease, height 0.3s ease;
+      transition: 0.3s ease;
     }
 
     .footer {
@@ -65,12 +65,13 @@
       width: 100%;
       padding: 0;
       background-color: $DARK_PRIMARY_GREEN;
-      transition: opacity 0.3s ease, height 0.3s ease, padding 0.3s ease;
+      transition: 0.3s ease;
 
       &.show {
         opacity: 1;
         height: auto;
         padding: 20px;
+        transition: 0.3s ease;
       }
 
       h3 {
@@ -91,13 +92,13 @@
       .sidebar {
         flex: 1 1 25%;
         background-color: $DARK_SECONDARY_GREEN;
-        transition: background-color 0.3s linear;
+        transition: 0.3s ease;
       }
 
       .message_component {
         flex: 1 1 75%;
         background-color: $DARK_HALF_GREEN;
-        transition: background-color 0.3s ease;
+        transition: 0.3s ease;
       }
     }
   }
@@ -125,6 +126,6 @@
     background-color: transparent;
     cursor: pointer;
     color: $WHITE;
-    transition: color 0.3s ease;
+    transition: 0.3s ease;
   }
 }
