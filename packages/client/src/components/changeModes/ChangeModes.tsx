@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFullscreenModeStore } from '../../zustand/customModes/useFullscreenModeStore';
 import { useLightModeStore } from '../../zustand/customModes/useLightModeStore';
 import { useShowHeaderStore } from '../../zustand/customModes/useShowHeaderStore';

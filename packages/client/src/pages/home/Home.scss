@@ -17,6 +17,7 @@
       .main {
         .sidebar {
           background-color: $LIGHT_SECONDARY_WHITE;
+          border-right: 2px solid $LIGHT_BORDER_GREY;
           transition: 0.3s ease;
         }
 
@@ -81,13 +82,14 @@
       height: 100%;
 
       .sidebar {
-        flex: 1 1 30%;
+        flex: 1 1 25%;
         background-color: $DARK_SECONDARY_GREEN;
+        border-right: 2px solid $DARK_BORDER_GREY;
         transition: 0.3s ease;
       }
 
       .message_component {
-        flex: 1 1 70%;
+        flex: 1 1 75%;
         background-color: $DARK_HALF_GREEN;
         transition: 0.3s ease;
       }

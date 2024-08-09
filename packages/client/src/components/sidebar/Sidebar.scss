@@ -147,6 +147,11 @@
           }
 
           .last_message {
+            display: inline-block;
+            max-width: 20ch;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
             font-size: 14px;
             color: $DARK_SUBTITLE_TEXT;
           }
