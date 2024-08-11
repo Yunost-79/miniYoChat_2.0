@@ -15,6 +15,11 @@
     &::before {
       background-color: rgba($LIGHT_PRIMARY_WHITE, 0.8);
     }
+    .center {
+      &::-webkit-scrollbar-thumb {
+        background-color: $LIGHT_BORDER_GREY;
+      }
+    }
   }
 
   &::after,
