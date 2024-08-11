@@ -12,11 +12,14 @@ $DARK_SECONDARY_GREEN: rgba(31, 38, 38, 1);
 $DARK_BORDER_GREY: #2d3838;
 $DARK_INPUT_GREEN: #1f2626;
 $DARK_HALF_GREEN: rgba(13, 26, 26, 0.7);
+$DARK_SECONDARY_HALF_GREEN: rgba(13, 26, 26, 0.5);
 $DARK_HOVER_GREEN: #2d3838;
 $DARK_MESSAGE: #1a2b2b;
 $DARK_OWN_MESSAGE: #305050;
 $DARK_TITLE_TEXT: #f7faf9;
 $DARK_SUBTITLE_TEXT: #a3bfba;
+$DARK_GRADIENT_VISIBLE_GREEN: rgba(13, 26, 26, 1);
+$DARK_GRADIENT_INVISIBLE_GREEN: rgba(13, 26, 26, 0);
 
 $LIGHT_PRIMARY_WHITE: #f7faf9;
 $LIGHT_SECONDARY_WHITE: rgba(247, 250, 248, 1);
@@ -28,6 +31,76 @@ $LIGHT_MESSAGE: #ecfffa;
 $LIGHT_OWN_MESSAGE: #defff6;
 $LIGHT_TITLE_TEXT: #1f2626;
 $LIGHT_SUBTITLE_TEXT: #5e7777;
+
+@mixin COMMON_BUTTON {
+  width: 40px;
+  height: 40px;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    padding: 8px;
+    border: 2px solid $DARK_HOVER_GREEN;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+
+    svg {
+      color: $WHITE;
+      transition: color 0.3s ease;
+    }
+
+    &:hover {
+      border: 2px solid $MINT_GREEN;
+      background-color: $DARK_HALF_GREEN;
+
+      svg {
+        color: $MINT_GREEN;
+      }
+    }
+  }
+
+  &.light {
+    button {
+      border: 2px solid $LIGHT_BORDER_GREY;
+      background-color: transparent;
+
+      &:hover {
+        background-color: $LIGHT_HALF_WHITE;
+        border: 2px solid $MINT_GREEN;
+
+        svg {
+          color: $MINT_GREEN;
+        }
+      }
+
+      svg {
+        color: $LIGHT_SUBTITLE_TEXT;
+      }
+    }
+  }
+}
+
+@mixin COMMON_SCROLLBAR {
+  &::-webkit-scrollbar {
+    width: 12px;
+    transition: opacity 0.2s linear;
+  }
+
+  &:hover::-webkit-scrollbar {
+    opacity: 1;
+    transition: opacity 0.2s linear;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $DARK_BORDER_GREY;
+    transition: background-color 0.2s linear;
+  }
+}
 
 //  ========== Local variables ==========
 $light_background_gradient: linear-gradient(70deg, rgb(79, 183, 131) 15%, rgb(254, 235, 151) 97%);

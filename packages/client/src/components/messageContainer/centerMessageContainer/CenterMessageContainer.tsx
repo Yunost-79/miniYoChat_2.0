@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react';
 
 import Message from '../../../components/message/Message';
 
+import '../MessageContainer.scss';
+
 const CenterMessageContainer = () => {
   const MessageListRef = useRef<HTMLDivElement>(null);
 

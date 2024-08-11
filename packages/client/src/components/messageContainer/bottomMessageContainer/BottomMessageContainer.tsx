@@ -3,17 +3,21 @@ import FullscreenButton from '../../../components/UI/Buttons/FullscreenButton/Fu
 
 import SendInput from '../../UI/Inputs/SendInput/SendInput';
 
+import '../MessageContainer.scss';
+
 const BottomMessageContainer = () => {
   return (
-    <div className="bottom">
-      <div className="send_item">
-        <SendInput />
+    <>
+      <div className="bottom">
+        <div className="send_item">
+          <SendInput />
+        </div>
+        <div className="send_setting">
+          <FullscreenButton />
+          <SwitchLightModeButton />
+        </div>
       </div>
-      <div className="send_setting">
-        <FullscreenButton />
-        <SwitchLightModeButton />
-      </div>
-    </div>
+    </>
   );
 };
 

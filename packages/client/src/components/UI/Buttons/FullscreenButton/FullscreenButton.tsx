@@ -11,8 +11,8 @@ const FullscreenButton = () => {
   const { isLightMode } = useLightModeStore();
 
   return (
-    <div className={`fullscreen_mode ${isLightMode ? 'light' : ''}`}>
-      <button onClick={() => setFullscreenMode(!isFullscreenMode)}>{isFullscreenMode ? <FullscreenIcon /> : <FullscreenExitIcon />}</button>
+    <div className={`fullscreen_mode ${isLightMode ? 'light' : ''}`} onClick={() => setFullscreenMode(!isFullscreenMode)}>
+      <button>{isFullscreenMode ? <FullscreenIcon /> : <FullscreenExitIcon />}</button>
     </div>
   );
 };

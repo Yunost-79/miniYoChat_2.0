@@ -7,6 +7,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CloseIcon from '@mui/icons-material/Close';
 
 import TestImage from '/test-message-img.jpg';
+
 import './Message.scss';
 
 type Message = {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { IconButton, InputBase, Paper } from '@mui/material';
 
@@ -22,6 +22,12 @@ const AuthInput = (props: AuthInputProps) => {
 
   const [isShowText, setIsShowText] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (type === 'text') {
+      setIsShowText(false);
+    }
+  }, [type]);
+
   return (
     <div className={`${className ? className : ''} input ${isLightMode ? 'light' : ''}`}>
       <Paper className="input_form">
@@ -29,7 +35,7 @@ const AuthInput = (props: AuthInputProps) => {
           className="input_item"
           placeholder={placeholder}
           value={value}
-          type={type === 'password' && isShowText ? 'text' : 'password'}
+          type={type === 'password' && isShowText ? 'text' : type}
           onChange={(e) => setValue && setValue(e.target.value)}
         />
         {type === 'password' && (

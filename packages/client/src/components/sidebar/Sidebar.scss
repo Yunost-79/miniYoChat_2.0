@@ -45,14 +45,6 @@
     display: flex;
     flex-direction: column;
 
-    &:hover {
-      .chat_list {
-        &::-webkit-scrollbar {
-          opacity: 0;
-        }
-      }
-    }
-
     .chat_list {
       position: relative;
       flex: 1;
@@ -60,36 +52,12 @@
       flex-direction: column;
       margin-top: 12px;
       width: 100%;
-      // overflow-y: hidden;
       position: relative;
       transition: 0.2s linear;
       overflow-y: scroll;
+      overflow-x: hidden;
 
-      &:hover {
-        // overflow-y: scroll;
-        .chat_list_item {
-          margin-right: 0;
-        }
-      }
-
-      &::-webkit-scrollbar {
-        position: absolute;
-        top: 0;
-        left: 0;
-
-        width: 12px;
-        transition: opacity 0.2s linear;
-      }
-
-      &:hover::-webkit-scrollbar {
-        opacity: 1;
-        transition: opacity 0.2s linear;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background-color: $DARK_BORDER_GREY;
-        transition: background-color 0.2s linear;
-      }
+      @include COMMON_SCROLLBAR;
 
       &.light {
         &::-webkit-scrollbar-thumb {
