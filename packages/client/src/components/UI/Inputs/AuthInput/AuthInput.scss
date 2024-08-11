@@ -1,0 +1,99 @@
+@import '../../../../index.scss';
+
+.input {
+  width: 100%;
+
+  &.light {
+    .input_form {
+      border: 2px solid $LIGHT_BORDER_GREY;
+
+      &:focus-within {
+        .input_item {
+          input {
+            color: $LIGHT_TITLE_TEXT;
+          }
+        }
+      }
+
+      .input_item {
+        width: 100%;
+        color: $BLACK;
+
+        input {
+          color: $MINT_GREEN;
+
+          &::placeholder {
+            color: $GREY;
+          }
+        }
+      }
+    }
+    .show_button {
+      color: $LIGHT_SUBTITLE_TEXT;
+    }
+
+    .show_button {
+      color: $LIGHT_SUBTITLE_TEXT;
+
+      &:hover {
+        color: $MINT_GREEN;
+      }
+    }
+  }
+
+  .input_form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: none;
+    border: 2px solid $DARK_HOVER_GREEN;
+    background-color: transparent;
+    transition: 0.2s ease;
+
+    &:focus-within {
+      border: 2px solid $MINT_GREEN;
+
+      .input_item {
+        color: $MINT_GREEN;
+
+        input {
+          color: $DARK_TITLE_TEXT;
+
+          &::placeholder {
+            color: $MINT_GREEN;
+          }
+        }
+      }
+    }
+
+    .show_button {
+      color: $DARK_SUBTITLE_TEXT;
+      padding: 5px;
+      margin-right: 5px;
+      transition: 0.3s ease;
+
+      &:hover {
+        color: $MINT_GREEN;
+      }
+    }
+
+    .input_item {
+      width: 100%;
+      color: $DARK_SUBTITLE_TEXT;
+
+      input {
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        color: inherit; // Ensures the input text color matches the .input_item color
+
+        &::placeholder {
+          color: $DARK_SUBTITLE_TEXT;
+        }
+      }
+    }
+  }
+}

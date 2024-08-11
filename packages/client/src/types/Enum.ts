@@ -4,8 +4,9 @@ export const EMainPaths = {
   signup: '/signup',
 };
 
-export const ECustomModes = {
+export const EZustand = {
   isLightMode: 'isLightMode',
   isFullscreenMode: 'isFullscreenMode',
   isShowHeader: 'isShowHeader',
+  isAuth: 'isAuth',
 };

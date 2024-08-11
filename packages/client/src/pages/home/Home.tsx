@@ -14,7 +14,7 @@ const Home = () => {
   const { setShowHeader } = useShowHeaderStore();
 
   return (
-    <div className={`wrapper ${isLightMode ? 'light' : ''} `}>
+    <div className={`wrapper_home ${isLightMode ? 'light' : ''} `}>
       <div className={`container  ${isFullscreenMode ? 'fullscreen' : ''}`}>
         {/* <Header /> */}
         <div className="main" onClick={() => setShowHeader(false)}>

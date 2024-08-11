@@ -1,47 +1,5 @@
 @import '../../index.scss';
 
-@mixin bottom_light_style {
-  button {
-    border: 2px solid $LIGHT_BORDER_GREY;
-    background-color: $LIGHT_SECONDARY_WHITE;
-
-    &:hover {
-      background-color: $LIGHT_HOVER_WHITE;
-
-      svg {
-        color: $LIGHT_TITLE_TEXT;
-      }
-    }
-
-    svg {
-      color: $LIGHT_SUBTITLE_TEXT;
-    }
-  }
-}
-
-@mixin bottom_dark_style {
-  button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border: 2px solid $DARK_HOVER_GREEN;
-    border-radius: 8px;
-    background-color: $DARK_SECONDARY_GREEN;
-    cursor: pointer;
-    transition: 0.3s ease;
-
-    &:hover {
-      background-color: $DARK_HOVER_GREEN;
-    }
-
-    svg {
-      color: $WHITE;
-    }
-  }
-}
-
 .message_container_component {
   position: relative;
   display: flex;
@@ -52,21 +10,6 @@
   &.light {
     .top {
       background-color: $LIGHT_SECONDARY_WHITE;
-
-      .user_setting {
-        @include bottom_light_style;
-      }
-    }
-
-    .bottom {
-      .send_setting {
-        .fullscreen_mode {
-          @include bottom_light_style;
-        }
-        .switch_theme_mode {
-          @include bottom_light_style;
-        }
-      }
     }
   }
 
@@ -103,10 +46,6 @@
         }
       }
     }
-
-    .user_setting {
-      @include bottom_dark_style;
-    }
   }
 
   .center {
@@ -136,12 +75,6 @@
     .send_setting {
       display: flex;
       gap: 5px;
-      .fullscreen_mode {
-        @include bottom_dark_style;
-      }
-      .switch_theme_mode {
-        @include bottom_dark_style;
-      }
     }
   }
 }

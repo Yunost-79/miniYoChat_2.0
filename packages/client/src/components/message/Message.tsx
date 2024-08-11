@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { FullScreen, useFullScreenHandle } from 'react-full-screen';
 
 import { useLightModeStore } from '../../zustand/customModes/useLightModeStore';

@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Home from './pages/home/Home';
-import Login from './pages/login/Login';
-import SignUp from './pages/signup/SignUp';
+import Login from './pages/auth/Login';
+import SignUp from './pages/auth/SignUp';
 
 import { useLightModeStore } from './zustand/customModes/useLightModeStore';
 
