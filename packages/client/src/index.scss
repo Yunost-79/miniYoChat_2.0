@@ -100,7 +100,11 @@ $LIGHT_SUBTITLE_TEXT: #5e7777;
 
 //  ========== Local variables ==========
 $light_background_gradient: linear-gradient(70deg, rgb(79, 183, 131) 15%, rgb(254, 235, 151) 97%);
-$dark_background_gradient: linear-gradient(112.1deg, rgba(32, 38, 57, 1) 11.4%, rgba(63, 76, 119, 1) 70.2%);
+$dark_background_gradient: linear-gradient(
+  112.1deg,
+  rgba(32, 38, 57, 1) 11.4%,
+  rgba(63, 76, 119, 1) 70.2%
+);
 
 html,
 body,
@@ -196,9 +200,6 @@ li {
 
 * {
   box-sizing: border-box;
-}
-
-html {
 }
 
 #root {

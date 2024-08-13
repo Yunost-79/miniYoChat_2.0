@@ -1,41 +1,51 @@
+import { useEffect, useState } from 'react';
+
+import { updateUser } from '../../API/axiosRequests';
 import { useLightModeStore } from '../../zustand/customModesStores/useLightModeStore';
 import { useFullscreenModeStore } from '../../zustand/customModesStores/useFullscreenModeStore';
-import { useShowHeaderStore } from '../../zustand/customModesStores/useShowHeaderStore';
 
 import MessageContainer from '../../components/messageContainer/MessageContainer';
 import Sidebar from '../../components/sidebar/Sidebar';
+import Loader from '../../components/UI/Loader/Loader';
 
 import './Home.scss';
-import { useDataStore } from '../../zustand/dataStore/useDataStore';
-import { useEffect } from 'react';
-import { updateUser } from '../../API/axiosRequests';
 
 const Home = () => {
+  const [loading, setLoading] = useState<boolean>(true);
+
   const { isLightMode } = useLightModeStore();
   const { isFullscreenMode } = useFullscreenModeStore();
-  const { setShowHeader } = useShowHeaderStore();
 
-  const { userData } = useDataStore();
-
+  // Strange behavior on reload page
   useEffect(() => {
-    updateUser();
+    try {
+      setLoading(true);
+      updateUser();
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
   }, []);
-
-  console.log(userData);
 
   return (
     <div className={`wrapper_home ${isLightMode ? 'light' : ''} `}>
-      <div className={`container  ${isFullscreenMode ? 'fullscreen' : ''}`}>
-        {/* <Header /> */}
-        <div className="main" onClick={() => setShowHeader(false)}>
-          <div className="sidebar">
-            <Sidebar />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className={`container ${isFullscreenMode ? 'fullscreen' : ''}`}>
+            <div className="main">
+              <div className="sidebar">
+                <Sidebar />
+              </div>
+              <div className="message_component">
+                <MessageContainer />
+              </div>
+            </div>
           </div>
-          <div className="message_component">
-            <MessageContainer />
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };

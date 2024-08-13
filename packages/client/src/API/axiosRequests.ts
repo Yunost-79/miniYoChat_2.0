@@ -62,8 +62,8 @@ export const logout = async (): Promise<void> => {
 export const updateUser = async (): Promise<void> => {
   try {
     const { data } = await instance.get('/users/update-user');
-
     setUserData(data);
+    return data;
   } catch (e) {
     const err = e as Error;
     console.error(err);
