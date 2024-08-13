@@ -9,6 +9,8 @@ export const EZustand = {
   isFullscreenMode: 'isFullscreenMode',
   isShowHeader: 'isShowHeader',
   isAuth: 'isAuth',
+  jwt: 'jwt',
+  userData: 'userData',
 };
 
 export const ESignUp = {

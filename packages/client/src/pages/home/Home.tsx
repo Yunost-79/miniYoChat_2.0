@@ -4,14 +4,24 @@ import { useShowHeaderStore } from '../../zustand/customModesStores/useShowHeade
 
 import MessageContainer from '../../components/messageContainer/MessageContainer';
 import Sidebar from '../../components/sidebar/Sidebar';
-// import Header from '../../components/header/Header';
 
 import './Home.scss';
+import { useDataStore } from '../../zustand/dataStore/useDataStore';
+import { useEffect } from 'react';
+import { updateUser } from '../../API/axiosRequests';
 
 const Home = () => {
   const { isLightMode } = useLightModeStore();
   const { isFullscreenMode } = useFullscreenModeStore();
   const { setShowHeader } = useShowHeaderStore();
+
+  const { userData } = useDataStore();
+
+  useEffect(() => {
+    updateUser();
+  }, []);
+
+  console.log(userData);
 
   return (
     <div className={`wrapper_home ${isLightMode ? 'light' : ''} `}>

@@ -11,6 +11,7 @@ export const EMessageRoutes = {
 
 export const EUserRoutes = {
   main: '/',
+  updateUser: '/update-user',
 };
 
 export const EModels = {

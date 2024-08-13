@@ -1,4 +1,4 @@
-import useAuthStore from '../../../zustand/authStores/useAuthStore';
+import { useAuthStore } from '../../../zustand/authStores/useAuthStore';
 
 import SearchInput from '../../UI/Inputs/SearchInput/SearchInput';
 

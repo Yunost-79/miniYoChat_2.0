@@ -5,7 +5,7 @@ import { AxiosError } from 'axios';
 
 import { login } from '../../API/axiosRequests';
 import { useLightModeStore } from '../../zustand/customModesStores/useLightModeStore';
-import useAuthStore from '../../zustand/authStores/useAuthStore';
+import { useAuthStore } from '../../zustand/authStores/useAuthStore';
 import { loginValidationSchema } from '../../yup/yupSchemas';
 
 import AuthInput from '../../components/UI/Inputs/AuthInput/AuthInput';
