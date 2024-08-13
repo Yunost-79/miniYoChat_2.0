@@ -11,7 +11,7 @@ interface RequestBody {
   email: string;
   username: string;
   password: string;
-  confirmPassword: string;
+  rePassword: string;
   profileAvatar: string;
 }
 
@@ -19,20 +19,26 @@ interface RequestBody {
 
 export const signup = async (req: TypedRequestBody<RequestBody>, res: Response) => {
   try {
-    const { email, username, password, confirmPassword } = req.body;
-    if (password !== confirmPassword) {
+    const { email, username, password, rePassword } = req.body;
+
+    if (password !== rePassword) {
       return res.status(EStatusCodes.BAD_REQUEST).json({ error: "Passwords don't match" });
     }
 
-    const currentUser = await User.findOne({ username });
+    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
 
-    if (currentUser) {
-      return res.status(EStatusCodes.BAD_REQUEST).json({ error: 'Username already exists' });
-    }
-    const currentEmail = await User.findOne({ email });
+    if (existingUser) {
+      if (existingUser.username === username) {
+        console.log('existingUser.username === username', existingUser.username === username);
 
-    if (currentEmail) {
-      return res.status(EStatusCodes.BAD_REQUEST).json({ error: 'Email already exists' });
+        return res
+          .status(EStatusCodes.BAD_REQUEST)
+          .json({ error: { type: 'username', text: 'Username already exists' } });
+      } else {
+        return res
+          .status(EStatusCodes.BAD_REQUEST)
+          .json({ error: { type: 'email', text: 'Email already exists' } });
+      }
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -40,7 +46,6 @@ export const signup = async (req: TypedRequestBody<RequestBody>, res: Response) 
 
     const avatarColor = 'random';
     const avatarSize = 128;
-
     const profileAvatar = `https://ui-avatars.com/api/?name=${username}&background=${avatarColor}&size=${avatarSize}`;
 
     const newUser = new User({
@@ -50,24 +55,20 @@ export const signup = async (req: TypedRequestBody<RequestBody>, res: Response) 
       profileAvatar,
     });
 
-    if (newUser) {
-      generateTokenAndSetCookie(newUser._id, res);
-      await newUser.save();
+    await newUser.save();
 
-      res.status(EStatusCodes.CREATED).json({
-        _id: newUser._id,
-        email: newUser.email,
-        username: newUser.username,
-        profileAvatar: newUser.profileAvatar,
-      });
-    } else {
-      res.status(EStatusCodes.BAD_REQUEST).json({ error: 'Invalid user data' });
-    }
+    generateTokenAndSetCookie(newUser._id, res);
+
+    return res.status(EStatusCodes.CREATED).json({
+      _id: newUser._id,
+      email: newUser.email,
+      username: newUser.username,
+      profileAvatar: newUser.profileAvatar,
+    });
   } catch (e) {
     const err = e as Error;
-
-    console.log('Error in signup controller', err.message);
-    res.status(EStatusCodes.INTERNAL_SERVER_ERROR).json({ error: err.message });
+    console.error('Error in signup controller:', err.message);
+    return res.status(EStatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal server error' });
   }
 };
 
@@ -75,17 +76,21 @@ export const signup = async (req: TypedRequestBody<RequestBody>, res: Response) 
 
 export const login = async (req: Request, res: Response) => {
   try {
-    const { email, username, password } = req.body;
+    const { username, password } = req.body;
 
     const currentUser = await User.findOne({ username });
-    const currentEmail = await User.findOne({ email });
 
-    if (!currentUser || !currentEmail) {
-      return res.status(EStatusCodes.BAD_REQUEST).json({ error: 'Invalid username or email' });
+    if (!currentUser) {
+      return res
+        .status(EStatusCodes.BAD_REQUEST)
+        .json({ error: { type: 'username', text: 'User with this username not found' } });
     }
     const isCorrectPassword = await bcrypt.compare(password, currentUser.password || '');
+
     if (!isCorrectPassword) {
-      return res.status(EStatusCodes.BAD_REQUEST).json({ error: 'Invalid password' });
+      return res
+        .status(EStatusCodes.BAD_REQUEST)
+        .json({ error: { type: 'password', text: 'Incorrect password' } });
     }
 
     generateTokenAndSetCookie(currentUser._id, res);
