@@ -3,16 +3,32 @@ import useAuthStore from '../../../zustand/useAuthStore';
 import SearchInput from '../../UI/Inputs/SearchInput/SearchInput';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import OwnerImage from '/test-user.png';
+import MoreInfoButton from '../../../components/UI/Buttons/MoreInfoButton/MoreInfoButton';
+import { Menu, MenuItem } from '@mui/material';
+import Fade from '@mui/material/Fade';
+
+import { useState } from 'react';
 
 const SidebarHeader = () => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
   const { setIsAuth } = useAuthStore();
 
+  const open = Boolean(anchorEl);
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const handleLogout = () => {
+    setAnchorEl(null);
     setIsAuth(false);
   };
+
   return (
     <div className="sidebar_header">
       <div className="owner_info">
@@ -21,9 +37,30 @@ const SidebarHeader = () => {
           <span>UserNameUserNameUserNameUserNameUserName</span>
         </div>
 
-        <div className="owner_setting" onClick={handleLogout}>
-          <MoreVertIcon />
+        <div className="owner_setting">
+          <MoreInfoButton onClick={handleClick} />
         </div>
+        <Menu
+          id="long-menu"
+          MenuListProps={{
+            'aria-labelledby': 'long-button',
+          }}
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          TransitionComponent={Fade}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+        >
+          <MenuItem onClick={handleClose}>Setting</MenuItem>
+          <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        </Menu>
       </div>
       <div className="search">
         <SearchInput />
