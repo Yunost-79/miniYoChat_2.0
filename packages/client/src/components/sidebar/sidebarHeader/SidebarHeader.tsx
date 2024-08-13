@@ -14,7 +14,7 @@ import { useState } from 'react';
 const SidebarHeader = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const { setIsAuth } = useAuthStore();
+  const { signOut } = useAuthStore();
 
   const open = Boolean(anchorEl);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -26,7 +26,7 @@ const SidebarHeader = () => {
   };
   const handleLogout = () => {
     setAnchorEl(null);
-    setIsAuth(false);
+    signOut();
   };
 
   return (

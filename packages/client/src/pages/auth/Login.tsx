@@ -1,34 +1,63 @@
-import { useState } from 'react';
-
 import { Link, useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik';
 import { Button } from '@mui/material';
+import { AxiosError } from 'axios';
 
+import { login } from '../../API/axiosRequests';
 import { useLightModeStore } from '../../zustand/customModes/useLightModeStore';
 import useAuthStore from '../../zustand/useAuthStore';
+import { loginValidationSchema } from '../../yup/yupSchemas';
 
 import AuthInput from '../../components/UI/Inputs/AuthInput/AuthInput';
 import SwitchLightModeButton from '../../components/UI/Buttons/SwitchLightModeButton/SwitchLightButton';
 
-import { EMainPaths } from '../../types/Enum';
+import { LoginUserData } from '../../types/globalTypes';
+import { ELogin, EMainPaths } from '../../types/Enum';
 
 import './Auth.scss';
 
 const Login = () => {
-  const [emailValue, setEmailValue] = useState<string>('');
-  const [passwordValue, setPasswordValue] = useState<string>('');
-
   const { isLightMode } = useLightModeStore();
   const { setIsAuth } = useAuthStore();
-
   const navigate = useNavigate();
 
-  const handleLogin = (event: React.FormEvent) => {
-    event.preventDefault();
-    setIsAuth(true);
-    navigate(EMainPaths.main);
+  const formik = useFormik({
+    initialValues: {
+      username: '',
+      password: '',
+    },
+    validationSchema: loginValidationSchema,
+    onSubmit: async (values, { setFieldError }) => {
+      const userData: LoginUserData = {
+        username: values.username.trim(),
+        password: values.password.trim(),
+      };
 
-    console.log('Email:', emailValue, 'Password:', passwordValue);
-  };
+      try {
+        const response = await login(userData);
+        if (response) {
+          setIsAuth(true);
+          navigate(EMainPaths.main);
+        }
+      } catch (e) {
+        const err = e as AxiosError;
+
+        if (err.response && err.response.data) {
+          const errorData = err.response.data as { error?: { type: string; text: string } };
+
+          if (errorData.error?.type === ELogin.username) {
+            setFieldError(ELogin.username, errorData.error.text);
+          }
+
+          if (errorData.error?.type === ELogin.password) {
+            setFieldError(ELogin.password, errorData.error.text);
+          }
+        } else {
+          console.error('Unexpected error:', err.message || 'Unknown error');
+        }
+      }
+    },
+  });
 
   return (
     <div className={`wrapper_auth ${isLightMode ? 'light' : ''}`}>
@@ -37,9 +66,30 @@ const Login = () => {
           <h1>Login</h1>
           <h2>Welcome to Mini Yo Chat</h2>
         </div>
-        <form className="auth_form" onSubmit={handleLogin}>
-          <AuthInput isLightMode={isLightMode} type="text" placeholder="Email" value={emailValue} setValue={setEmailValue} />
-          <AuthInput isLightMode={isLightMode} type="password" placeholder="Password" value={passwordValue} setValue={setPasswordValue} />
+        <form className="auth_form" onSubmit={formik.handleSubmit}>
+          <AuthInput
+            isLightMode={isLightMode}
+            name={ELogin.username}
+            type="text"
+            placeholder="Username"
+            value={formik.values.username}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.username && Boolean(formik.errors.username)}
+            helperText={formik.touched.username && formik.errors.username}
+          />
+          <AuthInput
+            isLightMode={isLightMode}
+            name={ELogin.password}
+            type="password"
+            placeholder="Password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
+          />
+
           <Button className="auth_button" type="submit">
             Login
           </Button>

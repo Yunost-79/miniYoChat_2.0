@@ -1,3 +1,4 @@
+
 import { useLightModeStore } from '../../zustand/customModes/useLightModeStore';
 import { useFullscreenModeStore } from '../../zustand/customModes/useFullscreenModeStore';
 import { useShowHeaderStore } from '../../zustand/customModes/useShowHeaderStore';
@@ -12,6 +13,9 @@ const Home = () => {
   const { isLightMode } = useLightModeStore();
   const { isFullscreenMode } = useFullscreenModeStore();
   const { setShowHeader } = useShowHeaderStore();
+
+
+
 
   return (
     <div className={`wrapper_home ${isLightMode ? 'light' : ''} `}>

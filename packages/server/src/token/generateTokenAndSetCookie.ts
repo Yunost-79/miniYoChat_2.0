@@ -21,7 +21,7 @@ const generateTokenAndSetCookie = (userId: ObjectId, res: Response) => {
 
   res.cookie('jwt', token, {
     maxAge: days * 24 * 60 * 60 * 1000,
-    httpOnly: true,
+    httpOnly: false,
     sameSite: 'strict',
     // secure: NODE_JWT !== 'development',
   });

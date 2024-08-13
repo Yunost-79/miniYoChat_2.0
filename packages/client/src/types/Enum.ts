@@ -10,3 +10,15 @@ export const EZustand = {
   isShowHeader: 'isShowHeader',
   isAuth: 'isAuth',
 };
+
+export const ESignUp = {
+  email: 'email',
+  username: 'username',
+  password: 'password',
+  rePassword: 'rePassword',
+};
+
+export const ELogin = {
+  username: 'username',
+  password: 'password',
+};

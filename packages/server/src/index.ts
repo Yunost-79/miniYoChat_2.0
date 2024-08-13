@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
 import authRoutes from './routers/authRoutes.ts';
@@ -13,6 +14,13 @@ dotenv.config();
 const PORT = (process.env.PORT as string) || 5000;
 
 const app = express();
+
+app.use(
+  cors({
+    origin: 'http://localhost:5173', // Allow requests from this origin
+    credentials: true, // Allow cookies to be sent with requests
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());

@@ -1,24 +1,35 @@
-import { useEffect, useState } from 'react';
-
-import { IconButton, InputBase, Paper } from '@mui/material';
-
+import { FocusEvent, useEffect, useState } from 'react';
+import { FormHelperText, IconButton, InputBase, Paper } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-
 import './AuthInput.scss';
 
 type AuthInputProps = {
   className?: string;
+  name?: string;
   type: string;
   isLightMode?: boolean;
   placeholder?: string;
   value?: string;
-  setValue?: ((value: string) => void) | undefined;
-  handleSubmit?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onBlur?: (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  error?: boolean;
+  helperText?: string | false | undefined;
 };
 
 const AuthInput = (props: AuthInputProps) => {
-  const { className, type, isLightMode, placeholder, value, setValue } = props;
+  const {
+    className,
+    name,
+    type,
+    isLightMode,
+    placeholder,
+    value,
+    onChange,
+    onBlur,
+    error,
+    helperText,
+  } = props;
 
   const [isShowText, setIsShowText] = useState<boolean>(false);
 
@@ -29,14 +40,20 @@ const AuthInput = (props: AuthInputProps) => {
   }, [type]);
 
   return (
-    <div className={`${className ? className : ''} input ${isLightMode ? 'light' : ''}`}>
+    <div
+      className={`${className ? className : ''} input ${isLightMode ? 'light' : ''} ${
+        error ? 'error' : ''
+      }`}
+    >
       <Paper className="input_form">
         <InputBase
           className="input_item"
           placeholder={placeholder}
           value={value}
+          name={name}
           type={type === 'password' && isShowText ? 'text' : type}
-          onChange={(e) => setValue && setValue(e.target.value)}
+          onChange={onChange}
+          onBlur={onBlur}
         />
         {type === 'password' && (
           <IconButton
@@ -49,6 +66,11 @@ const AuthInput = (props: AuthInputProps) => {
           </IconButton>
         )}
       </Paper>
+      {helperText && (
+        <FormHelperText className="helper-text" error={error}>
+          {helperText}
+        </FormHelperText>
+      )}
     </div>
   );
 };
