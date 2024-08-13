@@ -1,18 +1,19 @@
+import { useState } from 'react';
 import { useAuthStore } from '../../../zustand/authStores/useAuthStore';
 
 import SearchInput from '../../UI/Inputs/SearchInput/SearchInput';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-import OwnerImage from '/test-user.png';
 import MoreInfoButton from '../../../components/UI/Buttons/MoreInfoButton/MoreInfoButton';
 import { Menu, MenuItem } from '@mui/material';
 import Fade from '@mui/material/Fade';
-
-import { useState } from 'react';
+import { useDataStore } from '../../../zustand/dataStore/useDataStore';
 
 const SidebarHeader = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  const { userData } = useDataStore();
 
   const { signOut } = useAuthStore();
 
@@ -29,12 +30,15 @@ const SidebarHeader = () => {
     signOut();
   };
 
+  console.log(userData);
+
   return (
     <div className="sidebar_header">
       <div className="owner_info">
         <div className="user_info">
-          {OwnerImage ? <img src={OwnerImage} /> : <AccountCircleIcon />}
-          <span>UserNameUserNameUserNameUserNameUserName</span>
+          {userData?.profileAvatar ? <img src={userData?.profileAvatar} /> : <AccountCircleIcon />}
+
+          <span>{userData?.username}</span>
         </div>
 
         <div className="owner_setting">

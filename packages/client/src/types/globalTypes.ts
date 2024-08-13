@@ -11,6 +11,7 @@ export type SignUpResponse = {
     id: string;
     email: string;
     username: string;
+    profileAvatar: string;
   };
   error?: string;
 };

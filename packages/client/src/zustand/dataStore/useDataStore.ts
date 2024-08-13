@@ -1,11 +1,17 @@
 import Cookies from 'js-cookie';
 import { create } from 'zustand';
-import { SignUpResponse } from '../../types/globalTypes';
 import { EZustand } from '../../types/Enum';
 
+type UserData = {
+  id: string;
+  email: string;
+  username: string;
+  profileAvatar: string;
+};
+
 type DataStore = {
-  userData: SignUpResponse | null;
-  setUserData: (userData: SignUpResponse) => void;
+  userData: UserData | null;
+  setUserData: (userData: UserData) => void;
   clearUserData: () => void;
 };
 
