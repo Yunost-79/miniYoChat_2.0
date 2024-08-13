@@ -1,5 +1,5 @@
-import { useFullscreenModeStore } from '../../../../zustand/customModes/useFullscreenModeStore';
-import { useLightModeStore } from '../../../../zustand/customModes/useLightModeStore';
+import { useFullscreenModeStore } from '../../../../zustand/customModesStores/useFullscreenModeStore';
+import { useLightModeStore } from '../../../../zustand/customModesStores/useLightModeStore';
 
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
@@ -11,7 +11,10 @@ const FullscreenButton = () => {
   const { isLightMode } = useLightModeStore();
 
   return (
-    <div className={`fullscreen_mode ${isLightMode ? 'light' : ''}`} onClick={() => setFullscreenMode(!isFullscreenMode)}>
+    <div
+      className={`fullscreen_mode ${isLightMode ? 'light' : ''}`}
+      onClick={() => setFullscreenMode(!isFullscreenMode)}
+    >
       <button>{isFullscreenMode ? <FullscreenIcon /> : <FullscreenExitIcon />}</button>
     </div>
   );

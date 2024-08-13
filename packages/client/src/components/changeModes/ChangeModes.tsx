@@ -1,6 +1,6 @@
-import { useFullscreenModeStore } from '../../zustand/customModes/useFullscreenModeStore';
-import { useLightModeStore } from '../../zustand/customModes/useLightModeStore';
-import { useShowHeaderStore } from '../../zustand/customModes/useShowHeaderStore';
+import { useFullscreenModeStore } from '../../zustand/customModesStores/useFullscreenModeStore';
+import { useLightModeStore } from '../../zustand/customModesStores/useLightModeStore';
+import { useShowHeaderStore } from '../../zustand/customModesStores/useShowHeaderStore';
 
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';

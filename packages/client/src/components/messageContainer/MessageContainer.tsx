@@ -1,4 +1,4 @@
-import { useLightModeStore } from '../../zustand/customModes/useLightModeStore';
+import { useLightModeStore } from '../../zustand/customModesStores/useLightModeStore';
 
 import TopMessageContainer from './topMessageContainer/TopMessageContainer';
 import CenterMessageContainer from './centerMessageContainer/CenterMessageContainer';

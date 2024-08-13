@@ -1,5 +1,5 @@
 import React from 'react';
-import { useShowHeaderStore } from '../../zustand/customModes/useShowHeaderStore';
+import { useShowHeaderStore } from '../../zustand/customModesStores/useShowHeaderStore';
 
 const Header = () => {
   const { isShowHeader } = useShowHeaderStore();

@@ -5,7 +5,7 @@ import Home from './pages/home/Home';
 import Login from './pages/auth/Login';
 import SignUp from './pages/auth/SignUp';
 
-import { useLightModeStore } from './zustand/customModes/useLightModeStore';
+import { useLightModeStore } from './zustand/customModesStores/useLightModeStore';
 
 import usePrivateRoutes from './hooks/protectRoutes/protectedRoutes';
 

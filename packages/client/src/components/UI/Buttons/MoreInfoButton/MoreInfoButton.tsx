@@ -1,7 +1,7 @@
 import { MouseEvent } from 'react';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import './MoreInfoButton.scss';
-import { useLightModeStore } from '../../../../zustand/customModes/useLightModeStore';
+import { useLightModeStore } from '../../../../zustand/customModesStores/useLightModeStore';
 import { Button } from '@mui/material';
 
 type MoreInfoButtonProps = {

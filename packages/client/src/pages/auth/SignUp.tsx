@@ -4,8 +4,8 @@ import { Button } from '@mui/material';
 import { AxiosError } from 'axios';
 
 import { signUp } from '../../API/axiosRequests';
-import { useLightModeStore } from '../../zustand/customModes/useLightModeStore';
-import useAuthStore from '../../zustand/useAuthStore';
+import { useLightModeStore } from '../../zustand/customModesStores/useLightModeStore';
+import useAuthStore from '../../zustand/authStores/useAuthStore';
 import { signUpValidationSchema } from '../../yup/yupSchemas';
 
 import AuthInput from '../../components/UI/Inputs/AuthInput/AuthInput';
@@ -49,7 +49,6 @@ const SignUp = () => {
         const err = e as AxiosError;
         if (err.response && err.response.data) {
           const errorData = err.response.data as { error?: { type: string; text: string } };
-          console.log('errorData', errorData);
 
           if (errorData.error?.type === ESignUp.username) {
             setFieldError(ESignUp.username, errorData.error.text);
@@ -65,7 +64,6 @@ const SignUp = () => {
     },
   });
 
-  console.log('formik.errors', formik.errors);
   return (
     <div className={`wrapper_auth ${isLightMode ? 'light' : ''}`}>
       <div className="auth_container">

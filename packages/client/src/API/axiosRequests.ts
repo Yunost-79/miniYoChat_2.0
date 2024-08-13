@@ -36,13 +36,9 @@ export const login = async (userData: LoginUserData): Promise<LoginResponse | un
     localStorage.setItem('chat-user', JSON.stringify(data));
     return data;
   } catch (e) {
-    if (e instanceof Error) {
-      console.error('Login error:', e.message);
-      throw e;
-    } else {
-      console.error('Unexpected error:', e);
-      throw new Error('An unexpected error occurred');
-    }
+    const err = e as Error;
+    console.error('Sign up error:', err.message);
+    throw err;
   }
 };
 

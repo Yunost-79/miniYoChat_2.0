@@ -1,4 +1,4 @@
-import { useLightModeStore } from '../../../../zustand/customModes/useLightModeStore';
+import { useLightModeStore } from '../../../../zustand/customModesStores/useLightModeStore';
 
 import LightModeIcon from '@mui/icons-material/LightMode';
 import ModeNightIcon from '@mui/icons-material/ModeNight';
@@ -9,7 +9,10 @@ const SwitchLightModeButton = () => {
   const { isLightMode, setLightMode } = useLightModeStore();
 
   return (
-    <div className={`switch_theme_mode ${isLightMode ? 'light' : ''}`} onClick={() => setLightMode(!isLightMode)}>
+    <div
+      className={`switch_theme_mode ${isLightMode ? 'light' : ''}`}
+      onClick={() => setLightMode(!isLightMode)}
+    >
       <button>{isLightMode ? <ModeNightIcon /> : <LightModeIcon />}</button>
     </div>
   );

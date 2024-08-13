@@ -1,6 +1,6 @@
 import { FullScreen, useFullScreenHandle } from 'react-full-screen';
 
-import { useLightModeStore } from '../../zustand/customModes/useLightModeStore';
+import { useLightModeStore } from '../../zustand/customModesStores/useLightModeStore';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
@@ -32,7 +32,10 @@ const Message = (props: Message) => {
           </div>
         </div>
         <div className="sended_content">
-          <div className="message_images" onClick={() => (!handleFullscreen.active ? handleFullscreen.enter() : undefined)}>
+          <div
+            className="message_images"
+            onClick={() => (!handleFullscreen.active ? handleFullscreen.enter() : undefined)}
+          >
             <FullScreen handle={handleFullscreen}>
               {handleFullscreen.active && (
                 <>
@@ -45,9 +48,11 @@ const Message = (props: Message) => {
           </div>
           <div className="messages_text">
             <span>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat perferendis maiores earum corrupti ad quos hic fugit ut voluptates
-              nesciunt, aliquid, totam dolorum esse animi excepturi consequatur labore officia magnam mollitia neque nulla aperiam? Ab totam veniam
-              delectus quibusdam! Maxime enim id provident eaque beatae! Laudantium ea vel veritatis quaerat!
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat perferendis maiores
+              earum corrupti ad quos hic fugit ut voluptates nesciunt, aliquid, totam dolorum esse
+              animi excepturi consequatur labore officia magnam mollitia neque nulla aperiam? Ab
+              totam veniam delectus quibusdam! Maxime enim id provident eaque beatae! Laudantium ea
+              vel veritatis quaerat!
             </span>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { useLightModeStore } from '../../../../zustand/customModes/useLightModeStore';
+import { useLightModeStore } from '../../../../zustand/customModesStores/useLightModeStore';
 
 import { Icon, IconButton, InputBase, Paper } from '@mui/material';
 
@@ -24,8 +24,18 @@ const SendInput = () => {
         <Icon className="upload_icon">
           <CustomUploadFile />
         </Icon>
-        <InputBase className="input_item" placeholder="Write a message..." value={value} onChange={(e) => setValue(e.target.value)} />
-        <IconButton className="button send_button" type="button" aria-label="send" onClick={handleSubmit}>
+        <InputBase
+          className="input_item"
+          placeholder="Write a message..."
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <IconButton
+          className="button send_button"
+          type="button"
+          aria-label="send"
+          onClick={handleSubmit}
+        >
           <Icon className="send_icon">
             <CustomSendIcon />
           </Icon>
