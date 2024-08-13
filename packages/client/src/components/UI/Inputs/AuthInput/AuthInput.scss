@@ -6,6 +6,7 @@
   &.light {
     .input_form {
       border: 2px solid $LIGHT_BORDER_GREY;
+      color: $LIGHT_TITLE_TEXT;
 
       &:focus-within {
         border-color: $MINT_GREEN;
@@ -18,12 +19,8 @@
       }
 
       .input_item {
-        width: 100%;
-        color: $BLACK;
-
         input {
-          color: $MINT_GREEN;
-
+          color: $LIGHT_TITLE_TEXT;
           &::placeholder {
             color: $GREY;
           }
@@ -37,6 +34,14 @@
       &:hover {
         color: $MINT_GREEN;
       }
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: $LIGHT_TITLE_TEXT;
     }
   }
 
@@ -71,6 +76,14 @@
           }
         }
       }
+
+      .show_button {
+        color: rgba($ERROR, 0.6);
+
+        &:hover {
+          color: $ERROR;
+        }
+      }
     }
   }
 
@@ -98,6 +111,14 @@
           &::placeholder {
             color: $MINT_GREEN;
           }
+        }
+      }
+
+      .show_button {
+        color: rgba($MINT_GREEN, 0.6);
+
+        &:hover {
+          color: $MINT_GREEN;
         }
       }
     }
@@ -142,7 +163,7 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: $DARK_TITLE_TEXT;
 }
 
 @keyframes shake {
