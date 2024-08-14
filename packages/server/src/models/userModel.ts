@@ -1,5 +1,4 @@
 import { Schema, model } from 'mongoose';
-import { EModels } from '../types/Enum.ts';
 
 const userSchema = new Schema(
   {
@@ -26,6 +25,6 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-const User = model(EModels.name.Users, userSchema);
+const User = model('Users', userSchema);
 
 export default User;

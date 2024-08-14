@@ -1,30 +1,16 @@
-export const EAuthRoutes = {
-  signup: '/signup',
-  login: '/login',
-  logout: '/logout',
-};
-
-export const EMessageRoutes = {
-  dynamicId: '/:id',
-  sendDynamicId: '/send/:id',
-};
-
-export const EUserRoutes = {
-  main: '/',
-  updateUser: '/update-user',
-};
-
-export const EModels = {
-  name: {
-    Users: 'Users',
-    Message: 'Message',
-    Conversation: 'Conversation',
-  },
-  ref: {
-    User: 'User',
-    Message: 'Message',
-  },
-};
+// export const EModels = {
+//   name: {
+//     Users: 'Users',
+//     Message: 'Message',
+//     Conversation: 'Conversation',
+//     ConversationList: 'ConversationList',
+//     SearchUsers: 'SearchUsers',
+//   },
+//   ref: {
+//     User: 'User',
+//     Message: 'Message',
+//   },
+// };
 
 export const EStatusCodes = {
   OK: 200,

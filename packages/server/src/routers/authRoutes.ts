@@ -2,12 +2,10 @@ import { Router } from 'express';
 
 import { login, logout, signup } from '../controllers/authController.ts';
 
-import { EAuthRoutes } from '../types/Enum.ts';
-
 const router = Router();
 
-router.post(EAuthRoutes.signup, signup);
-router.post(EAuthRoutes.login, login);
-router.post(EAuthRoutes.logout, logout);
+router.post('/signup', signup);
+router.post('/login', login);
+router.post('/logout', logout);
 
 export default router;

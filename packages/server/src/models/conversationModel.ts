@@ -1,18 +1,17 @@
 import { Schema, model, Types } from 'mongoose';
-import { EModels } from '../types/Enum.ts';
 
 const conversationSchema = new Schema(
   {
     participants: [
       {
         type: Types.ObjectId,
-        ref: EModels.ref.User,
+        ref: 'User',
       },
     ],
     messages: [
       {
         type: Types.ObjectId,
-        ref: EModels.ref.Message,
+        ref: 'Message',
         default: [],
       },
     ],
@@ -20,6 +19,6 @@ const conversationSchema = new Schema(
   { timestamps: true }
 );
 
-const Conversation = model(EModels.name.Conversation, conversationSchema);
+const Conversation = model('Conversation', conversationSchema);
 
 export default Conversation;
