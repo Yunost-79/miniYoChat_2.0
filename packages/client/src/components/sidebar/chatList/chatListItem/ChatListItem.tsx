@@ -1,16 +1,22 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
-import OwnerImage from '/test-user.png';
+type ChatListItem = {
+  id: string;
+  username: string;
+  profileAvatar: string;
+  lastMessage?: string;
+};
 
-const ChatListItem = () => {
+const ChatListItem = (props: ChatListItem) => {
+  const { id, username, profileAvatar, lastMessage } = props;
   return (
-    <div className="chat_list_item">
-      <div className="receiver_image">{OwnerImage ? <img src={OwnerImage} /> : <AccountCircleIcon />}</div>
+    <div className="chat_list_item" key={id}>
+      <div className="receiver_image">
+        {profileAvatar ? <img src={profileAvatar} /> : <AccountCircleIcon />}
+      </div>
       <div className="receiver_info">
-        <span className="username">Dude_#1</span>
-        <span className="last_message">
-          It`s last messages #1 It`s last messages #1 It`s last messages #1 It`s last messages #1 It`s last messages #1
-        </span>
+        <span className="username">{username}</span>
+        {lastMessage && <span className="last_message">{lastMessage}</span>}
       </div>
     </div>
   );

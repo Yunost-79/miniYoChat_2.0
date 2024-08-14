@@ -4,7 +4,8 @@ import { useDataStore } from '../zustand/dataStore/useDataStore';
 
 import { LoginResponse, LoginUserData, SignUpResponse, SignUpUserData } from '../types/globalTypes';
 
-const { setUserData, clearUserData } = useDataStore.getState();
+const { setUserData, clearUserData, setSearchUserData, clearSearchUserData } =
+  useDataStore.getState();
 
 export const signUp = async (userData: SignUpUserData): Promise<SignUpResponse | undefined> => {
   try {
@@ -14,8 +15,7 @@ export const signUp = async (userData: SignUpUserData): Promise<SignUpResponse |
       throw new Error(data.error);
     }
 
-    setUserData(data);
-
+    setUserData(data.user);
     return data;
   } catch (e) {
     if (e instanceof Error) {
@@ -36,8 +36,7 @@ export const login = async (userData: LoginUserData): Promise<LoginResponse | un
       throw new Error(data.error);
     }
 
-    setUserData(data);
-
+    setUserData(data.user);
     return data;
   } catch (e) {
     const err = e as Error;
@@ -48,11 +47,10 @@ export const login = async (userData: LoginUserData): Promise<LoginResponse | un
 
 export const logout = async (): Promise<void> => {
   try {
-    const { data } = await instance.post('/auth/logout');
+    await instance.post('/auth/logout');
 
     clearUserData();
-
-    return data;
+    clearSearchUserData();
   } catch (e) {
     const err = e as Error;
     console.error(err);
@@ -62,7 +60,33 @@ export const logout = async (): Promise<void> => {
 export const updateUser = async (): Promise<void> => {
   try {
     const { data } = await instance.get('/users/update-user');
-    setUserData(data);
+    console.log(data);
+
+    return setUserData(data);
+  } catch (e) {
+    const err = e as Error;
+    console.error(err);
+  }
+};
+
+export const searchUsers = async (query: string): Promise<void> => {
+  try {
+    const { data } = await instance.get('/users/search-users', {
+      params: { q: query },
+    });
+    return setSearchUserData(data);
+  } catch (e) {
+    const err = e as Error;
+    console.error(err);
+    throw err;
+  }
+};
+
+export const addUserToList = async (id: string) => {
+  try {
+    const { data } = await instance.get(`/users/chat-list/${id}`);
+
+    return setUserData(data);
   } catch (e) {
     const err = e as Error;
     console.error(err);

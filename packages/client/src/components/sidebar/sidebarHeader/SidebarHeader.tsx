@@ -1,19 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDataStore } from '../../../zustand/dataStore/useDataStore';
 import { useAuthStore } from '../../../zustand/authStores/useAuthStore';
-
 import SearchInput from '../../UI/Inputs/SearchInput/SearchInput';
-
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import SearchListItem from './searchListItem/SearchListItem';
+import { addUserToList, updateUser } from '../../../API/axiosRequests';
 
 import MoreInfoButton from '../../../components/UI/Buttons/MoreInfoButton/MoreInfoButton';
-import { Menu, MenuItem } from '@mui/material';
 import Fade from '@mui/material/Fade';
-import { useDataStore } from '../../../zustand/dataStore/useDataStore';
+import { Menu, MenuItem } from '@mui/material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { SearchUserData } from '../../../types/globalTypes';
 
 const SidebarHeader = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [visibleItems, setVisibleItems] = useState<boolean[]>([]);
 
-  const { userData } = useDataStore();
+  const { userData, searchUserData } = useDataStore();
 
   const { signOut } = useAuthStore();
 
@@ -30,7 +32,34 @@ const SidebarHeader = () => {
     signOut();
   };
 
-  console.log(userData);
+  const handleAddUser = async (id: string) => {
+    try {
+      await addUserToList(id);
+      await updateUser();
+      console.log(userData);
+    } catch (e) {
+      const err = e as Error;
+      console.error('SearchListItem error:', err.message);
+    }
+  };
+
+  useEffect(() => {
+    if (searchUserData) {
+      const visibilityArray = new Array(searchUserData.length).fill(false);
+      setVisibleItems(visibilityArray);
+
+      searchUserData.forEach((_, index) => {
+        setTimeout(() => {
+          setVisibleItems((prev) => prev.map((visible, i) => (i === index ? true : visible)));
+        }, index * 200);
+      });
+    }
+  }, [searchUserData]);
+
+  useEffect(() => {}, []);
+
+  // console.log('searchUserData', searchUserData);
+  // console.log('userData', userData);
 
   return (
     <div className="sidebar_header">
@@ -68,6 +97,19 @@ const SidebarHeader = () => {
       </div>
       <div className="search">
         <SearchInput />
+      </div>
+      <div className="search_list">
+        {searchUserData &&
+          searchUserData.map((user: SearchUserData, index) => (
+            <SearchListItem
+              key={user._id}
+              onClick={() => handleAddUser(user._id)}
+              id={user._id}
+              username={user.username}
+              profileAvatar={user.profileAvatar}
+              className={visibleItems[index] ? 'visible' : ''}
+            />
+          ))}
       </div>
     </div>
   );

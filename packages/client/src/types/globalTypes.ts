@@ -7,12 +7,7 @@ export type SignUpUserData = {
 
 export type SignUpResponse = {
   token: string;
-  user: {
-    id: string;
-    email: string;
-    username: string;
-    profileAvatar: string;
-  };
+  user: UserDataResponse;
   error?: string;
 };
 
@@ -21,12 +16,22 @@ export type LoginUserData = {
   password: string;
 };
 
+export type UserDataResponse = {
+  _id?: string;
+  email?: string;
+  username?: string;
+  profileAvatar?: string;
+};
+
 export type LoginResponse = {
   token: string;
-  user: {
-    id: string;
-    email: string;
-    username: string;
-  };
+  user: UserDataResponse;
   error?: string;
+};
+
+export type SearchUserData = {
+  _id: string;
+  profileAvatar: string;
+  username: string;
+  __v: number;
 };
