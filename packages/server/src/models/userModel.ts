@@ -1,5 +1,20 @@
 import { Schema, model } from 'mongoose';
 
+const chatListItem = new Schema({
+  username: {
+    type: String,
+    require: true,
+  },
+  profileAvatar: {
+    type: String,
+    require: true,
+  },
+  lastMessage: {
+    type: String,
+    require: true,
+  },
+});
+
 const userSchema = new Schema(
   {
     email: {
@@ -21,6 +36,8 @@ const userSchema = new Schema(
       type: String,
       default: '',
     },
+
+    conversationList: [chatListItem],
   },
   { timestamps: true }
 );
