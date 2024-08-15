@@ -1,4 +1,5 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useSocketContext } from '../../../../context/socketContext';
 
 type ChatListItem = {
   id: string;
@@ -9,8 +10,13 @@ type ChatListItem = {
 
 const ChatListItem = (props: ChatListItem) => {
   const { id, username, profileAvatar, lastMessage } = props;
+
+  const { onlineUsers } = useSocketContext();
+
+  const isOnline = onlineUsers.some(({ userId }) => userId === id);
+
   return (
-    <div className="chat_list_item" key={id}>
+    <div className={`chat_list_item ${isOnline ? 'online' : ''}`} key={id}>
       <div className="receiver_image">
         {profileAvatar ? <img src={profileAvatar} /> : <AccountCircleIcon />}
       </div>

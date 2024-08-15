@@ -20,7 +20,7 @@ const SidebarHeader = () => {
 
   const { signOut } = useAuthStore();
 
-  const { onlineUsers } = useSocketContext();
+  const { isConnected } = useSocketContext();
 
   const open = Boolean(anchorEl);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -35,13 +35,11 @@ const SidebarHeader = () => {
     signOut();
   };
 
-  console.log(onlineUsers);
 
   const handleAddUser = async (id: string) => {
     try {
       await addUserToList(id);
       await updateUser();
-      console.log(userData);
     } catch (e) {
       const err = e as Error;
       console.error('SearchListItem error:', err.message);
@@ -61,15 +59,11 @@ const SidebarHeader = () => {
     }
   }, [searchUserData]);
 
-  useEffect(() => {}, []);
-
-  // console.log('searchUserData', searchUserData);
-  // console.log('userData', userData);
 
   return (
     <div className="sidebar_header">
       <div className="owner_info">
-        <div className="user_info">
+        <div className={`user_info ${isConnected ? 'connected' : ''}`}>
           {userData?.profileAvatar ? <img src={userData?.profileAvatar} /> : <AccountCircleIcon />}
 
           <span>{userData?.username}</span>

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 import io, { Socket } from 'socket.io-client';
 import { useDataStore } from '../zustand/dataStore/useDataStore';
@@ -29,7 +30,6 @@ export const SocketContextProvider = ({ children }: ISocketContextProviderProps)
 
   const { userData } = useDataStore();
 
-  console.log(userData);
 
   useEffect(() => {
     if (userData?._id) {
@@ -66,6 +66,7 @@ export const SocketContextProvider = ({ children }: ISocketContextProviderProps)
         setSocket(null);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData?._id]);
 
   return (

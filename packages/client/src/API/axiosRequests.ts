@@ -60,7 +60,6 @@ export const logout = async (): Promise<void> => {
 export const updateUser = async (): Promise<void> => {
   try {
     const { data } = await instance.get('/users/update-user');
-    console.log(data);
 
     return setUserData(data);
   } catch (e) {

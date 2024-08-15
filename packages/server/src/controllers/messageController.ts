@@ -4,15 +4,8 @@ import Conversation from '../models/conversationModel';
 import Message from '../models/messageModel.ts';
 
 import { EStatusCodes } from '../types/Enum.ts';
-// import { getReceiverSocketId, io } from '../socket/socket.ts';
 
-interface SendMessageRequest extends Request {
-  body: {
-    message: string;
-  };
-}
-
-export const sendMessage = async (req: SendMessageRequest, res: Response) => {
+export const sendMessage = async (req: Request, res: Response) => {
   try {
     const { message } = req.body;
     const { id: receiverId } = req.params;
@@ -44,12 +37,6 @@ export const sendMessage = async (req: SendMessageRequest, res: Response) => {
       conversation.updateOne({ $push: { messages: newMessage._id } }),
     ]);
 
-    // const receiverSocketId = getReceiverSocketId(receiverId);
-
-    // console.log(receiverSocketId);
-    // if (receiverSocketId) {
-    //   io.to(receiverSocketId).emit('newMessage', newMessage);
-    // }
     res.status(EStatusCodes.CREATED).json(newMessage);
   } catch (e) {
     const err = e as Error;
@@ -58,6 +45,7 @@ export const sendMessage = async (req: SendMessageRequest, res: Response) => {
     res.status(EStatusCodes.INTERNAL_SERVER_ERROR).json({ error: err.message });
   }
 };
+
 export const getMessage = async (req: Request, res: Response) => {
   try {
     const { id: userToChatId } = req.params;

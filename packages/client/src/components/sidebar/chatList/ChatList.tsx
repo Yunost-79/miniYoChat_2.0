@@ -14,7 +14,7 @@ const ChatList = () => {
         chatList.map((listItem: ConversationItem) => (
           <ChatListItem
             key={listItem._id}
-            id={listItem.username}
+            id={listItem._id}
             username={listItem.username}
             profileAvatar={listItem.profileAvatar}
             lastMessage={listItem.lastMessage}
