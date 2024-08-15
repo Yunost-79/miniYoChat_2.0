@@ -22,6 +22,8 @@ const App = () => {
     document.body.classList.toggle('light', isLightMode);
   }, [isLightMode]);
 
+
+
   return (
     <div className="App">
       <Routes>

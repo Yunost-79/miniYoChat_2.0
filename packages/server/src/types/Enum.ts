@@ -1,17 +1,3 @@
-// export const EModels = {
-//   name: {
-//     Users: 'Users',
-//     Message: 'Message',
-//     Conversation: 'Conversation',
-//     ConversationList: 'ConversationList',
-//     SearchUsers: 'SearchUsers',
-//   },
-//   ref: {
-//     User: 'User',
-//     Message: 'Message',
-//   },
-// };
-
 export const EStatusCodes = {
   OK: 200,
   CREATED: 201,

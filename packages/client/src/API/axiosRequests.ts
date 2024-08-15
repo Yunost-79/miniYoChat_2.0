@@ -40,7 +40,7 @@ export const login = async (userData: LoginUserData): Promise<LoginResponse | un
     return data;
   } catch (e) {
     const err = e as Error;
-    console.error('Sign up error:', err.message);
+    console.error('Login error:', err.message);
     throw err;
   }
 };

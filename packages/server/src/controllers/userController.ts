@@ -6,7 +6,7 @@ import User from '../models/userModel.ts';
 import { EStatusCodes } from '../types/Enum.ts';
 import Message from '../models/messageModel.ts';
 import Conversation from '../models/conversationModel.ts';
-
+// import { addOnlineUser } from '../socket/socket.ts';
 
 export const getUsersChatList = async (req: Request, res: Response) => {
   try {
@@ -31,6 +31,9 @@ export const getUpdateUser = async (req: Request, res: Response) => {
       return res.status(EStatusCodes.NOT_FOUNDS).json({ error: 'User not found' });
     }
 
+      // addOnlineUser(userId);
+ 
+
     return res.status(EStatusCodes.OK).json(user);
   } catch (e) {
     const err = e as Error;
@@ -43,7 +46,6 @@ export const getSearchUsers = async (req: Request, res: Response) => {
   try {
     const query = req.query.q as string;
     const currentUser = req.user;
-
 
     if (!query) {
       return res.status(EStatusCodes.BAD_REQUEST).json({ error: 'Search query is required' });

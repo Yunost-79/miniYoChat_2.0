@@ -23,6 +23,7 @@ const Login = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const { isLightMode } = useLightModeStore();
   const { setIsAuth } = useAuthStore();
+
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -43,6 +44,10 @@ const Login = () => {
         if (response) {
           setIsAuth(true);
           navigate(EMainPaths.main);
+
+          // if (socket) {
+          //   socket.emit('addUser', response.user._id);
+          // }
         }
       } catch (e) {
         const err = e as AxiosError;

@@ -9,16 +9,16 @@ import userRoutes from './routers/userRoutes.ts';
 
 import connectToMongoDB from './db/connectToMongoDB.ts';
 
+import { app, httpServer } from './socket/socket';
+
 dotenv.config();
 
-const PORT = (process.env.PORT as string) || 5000;
-
-const app = express();
+const PORT = (process.env.PORT as string) || 7000;
 
 app.use(
   cors({
-    origin: 'http://localhost:5173', 
-    credentials: true, 
+    origin: 'http://localhost:5173',
+    credentials: true,
   })
 );
 
@@ -29,7 +29,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/users', userRoutes);
 
-app.listen(PORT, () => {
+httpServer.listen(7000, () => {
   connectToMongoDB();
-  console.log(`Server running on port: ${PORT}`);
+  console.log(`Server running on port: ${7000}`);
 });

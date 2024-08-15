@@ -4,6 +4,7 @@ import Conversation from '../models/conversationModel';
 import Message from '../models/messageModel.ts';
 
 import { EStatusCodes } from '../types/Enum.ts';
+// import { getReceiverSocketId, io } from '../socket/socket.ts';
 
 interface SendMessageRequest extends Request {
   body: {
@@ -38,8 +39,18 @@ export const sendMessage = async (req: SendMessageRequest, res: Response) => {
       message,
     });
 
-    await Promise.all([newMessage.save(), conversation.updateOne({ $push: { messages: newMessage._id } })]);
-    res.status(EStatusCodes.OK).json(newMessage);
+    await Promise.all([
+      newMessage.save(),
+      conversation.updateOne({ $push: { messages: newMessage._id } }),
+    ]);
+
+    // const receiverSocketId = getReceiverSocketId(receiverId);
+
+    // console.log(receiverSocketId);
+    // if (receiverSocketId) {
+    //   io.to(receiverSocketId).emit('newMessage', newMessage);
+    // }
+    res.status(EStatusCodes.CREATED).json(newMessage);
   } catch (e) {
     const err = e as Error;
 

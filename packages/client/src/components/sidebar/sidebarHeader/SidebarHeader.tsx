@@ -10,6 +10,7 @@ import Fade from '@mui/material/Fade';
 import { Menu, MenuItem } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { SearchUserData } from '../../../types/globalTypes';
+import { useSocketContext } from '../../../context/socketContext';
 
 const SidebarHeader = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -18,6 +19,8 @@ const SidebarHeader = () => {
   const { userData, searchUserData } = useDataStore();
 
   const { signOut } = useAuthStore();
+
+  const { onlineUsers } = useSocketContext();
 
   const open = Boolean(anchorEl);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -31,6 +34,8 @@ const SidebarHeader = () => {
     setAnchorEl(null);
     signOut();
   };
+
+  console.log(onlineUsers);
 
   const handleAddUser = async (id: string) => {
     try {
