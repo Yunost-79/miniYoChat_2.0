@@ -1,0 +1,144 @@
+@import '../../index.scss';
+
+.message {
+  display: flex;
+  justify-content: flex-start;
+
+  &:first-child {
+    padding-top: 100px;
+  }
+
+  &:last-child {
+    padding-bottom: 130px;
+  }
+
+  &.own {
+    justify-content: flex-end;
+    .message_content {
+      background-color: $DARK_OWN_MESSAGE;
+    }
+
+    &.light {
+      .message_content {
+        background-color: $LIGHT_OWN_MESSAGE;
+      }
+    }
+  }
+
+  &.light {
+    .message_content {
+      background-color: $LIGHT_MESSAGE;
+
+      .sended_info {
+        color: $LIGHT_TITLE_TEXT;
+      }
+
+      .sended_content {
+        color: $LIGHT_TITLE_TEXT;
+      }
+
+      .sended_date {
+        color: $LIGHT_SUBTITLE_TEXT;
+      }
+    }
+  }
+
+  .message_content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 60%;
+    background-color: $DARK_MESSAGE;
+    padding: 10px 10px 30px 10px;
+    border-radius: 8px;
+
+    .sended_info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: $DARK_TITLE_TEXT;
+
+      .sender_icon {
+        display: flex;
+        align-items: center;
+
+        svg {
+          width: 30px;
+          height: 30px;
+        }
+      }
+
+      .sender_username {
+        text-align: center;
+        display: inline-block;
+        max-width: 20ch;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .sended_content {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      color: $DARK_TITLE_TEXT;
+
+      .message_images {
+        img {
+          border-radius: 8px;
+          width: 100%;
+          object-fit: contain;
+          cursor: pointer;
+        }
+
+        .fullscreen-enabled {
+          position: relative;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: inherit;
+          }
+
+          svg {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            color: $DARK_TITLE_TEXT;
+            cursor: pointer;
+            opacity: 0.2;
+            transition: 0.3s ease;
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      .messages_text {
+        text-align: justify;
+        line-height: 18px;
+        font-weight: 300;
+
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+    .sended_date {
+      position: absolute;
+      bottom: 5px;
+      right: 10px;
+      color: $DARK_SUBTITLE_TEXT;
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+$WHITE: #fff;
+$BLACK: #000;
+$GREY: #757575;
+$NOTIFICATION_RED: #de0b51;
+$MINT_GREEN: #14cc8f;
+$ERROR: #d32f2f;
+
+$DARK_PRIMARY_GREEN: #0d1a1a;
+$DARK_SECONDARY_GREEN: rgba(31, 38, 38, 1);
+$DARK_BORDER_GREY: #2d3838;
+$DARK_INPUT_GREEN: #1f2626;
+$DARK_HALF_GREEN: rgba(13, 26, 26, 0.7);
+$DARK_SECONDARY_HALF_GREEN: rgba(13, 26, 26, 0.5);
+$DARK_HOVER_GREEN: #2d3838;
+$DARK_MESSAGE: #1a2b2b;
+$DARK_OWN_MESSAGE: #305050;
+$DARK_TITLE_TEXT: #f7faf9;
+$DARK_SUBTITLE_TEXT: #a3bfba;
+$DARK_GRADIENT_VISIBLE_GREEN: rgba(13, 26, 26, 1);
+$DARK_GRADIENT_INVISIBLE_GREEN: rgba(13, 26, 26, 0);
+
+$LIGHT_PRIMARY_WHITE: #f7faf9;
+$LIGHT_SECONDARY_WHITE: rgba(247, 250, 248, 1);
+$LIGHT_BORDER_GREY: #afbbb6;
+$LIGHT_INPUT_WHITE: #fff;
+$LIGHT_HALF_WHITE: rgba(255, 255, 255, 0.7);
+$LIGHT_HOVER_WHITE: #e6f0ed;
+$LIGHT_MESSAGE: #ecfffa;
+$LIGHT_OWN_MESSAGE: #defff6;
+$LIGHT_TITLE_TEXT: #1f2626;
+$LIGHT_SUBTITLE_TEXT: #5e7777;
+
+@mixin COMMON_BUTTON($width: 40px, $height: 40px) {
+  button {
+    min-width: 0;
+    width: $width;
+    height: $height;
+    border-radius: 8px;
+    padding: 0;
+    margin: 0;
+    border: 2px solid $DARK_HOVER_GREEN;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+
+    svg {
+      color: $WHITE;
+      transition: color 0.3s ease;
+    }
+
+    &:hover {
+      border-color: $MINT_GREEN;
+      background-color: $DARK_HALF_GREEN;
+
+      svg {
+        color: $MINT_GREEN;
+      }
+    }
+  }
+
+  &.light {
+    button {
+      border: 2px solid $LIGHT_BORDER_GREY;
+      background-color: transparent;
+
+      &:hover {
+        background-color: $LIGHT_HALF_WHITE;
+        border-color: $MINT_GREEN;
+
+        svg {
+          color: $MINT_GREEN;
+        }
+      }
+
+      svg {
+        color: $LIGHT_SUBTITLE_TEXT;
+      }
+    }
+  }
+}
+
+@mixin COMMON_SCROLLBAR {
+  &::-webkit-scrollbar {
+    width: 12px;
+    transition: opacity 0.2s linear;
+  }
+
+  &:hover::-webkit-scrollbar {
+    opacity: 1;
+    transition: opacity 0.2s linear;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $DARK_BORDER_GREY;
+    transition: background-color 0.2s linear;
+  }
+}
+
+//  ========== Local variables ==========
+$light_background_gradient: linear-gradient(70deg, rgb(79, 183, 131) 15%, rgb(254, 235, 151) 97%);
+$dark_background_gradient: linear-gradient(
+  112.1deg,
+  rgba(32, 38, 57, 1) 11.4%,
+  rgba(63, 76, 119, 1) 70.2%
+);
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+li {
+  list-style-type: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  overflow: hidden;
+}
+
+body {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+
+  background: $dark_background_gradient;
+
+  &.light {
+    background: $light_background_gradient;
+  }
+}

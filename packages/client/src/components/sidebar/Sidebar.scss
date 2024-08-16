@@ -1,0 +1,228 @@
+@import '../../index.scss';
+
+.sidebar_component {
+  height: 100%;
+  padding: 20px;
+
+  .sidebar_header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .owner_info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin: 0 10px;
+
+      .user_info {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        &:after {
+          position: absolute;
+          z-index: 2;
+          content: '';
+          bottom: 0;
+          left: 0;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: rgba($MINT_GREEN, 0);
+          transition: 0.3s ease;
+        }
+
+        &.connected {
+          &:after {
+            background-color: rgba($MINT_GREEN, 1);
+          }
+        }
+
+        svg {
+          width: 40px;
+          height: 40px;
+        }
+
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        span {
+          display: inline-block;
+          max-width: 15ch;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          font-size: 18px;
+        }
+      }
+    }
+
+    .search_list {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      gap: 5px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba($MINT_GREEN, 0.6);
+      overflow-y: auto;
+
+      .search_item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 12px;
+        border-radius: 8px;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        opacity: 0;
+        transform: translateX(-50px);
+        cursor: pointer;
+
+        &.visible {
+          opacity: 1;
+          transform: translateX(0);
+          transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        &:hover {
+          background-color: rgba($MINT_GREEN, 0.3);
+        }
+
+        &_image {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          svg {
+            width: 40px;
+            height: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar_main {
+    width: 100%;
+    height: calc(100% - 100px);
+    display: flex;
+    flex-direction: column;
+
+    .chat_list {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-top: 12px;
+      width: 100%;
+      position: relative;
+      transition: 0.2s linear;
+      overflow-y: scroll;
+      overflow-x: hidden;
+
+      @include COMMON_SCROLLBAR;
+
+      &.light {
+        &::-webkit-scrollbar-thumb {
+          background-color: $LIGHT_BORDER_GREY;
+        }
+
+        .chat_list_item {
+          &:hover {
+            background-color: $LIGHT_BORDER_GREY;
+          }
+          .receiver_info {
+            .username {
+              color: $LIGHT_TITLE_TEXT;
+            }
+            .last_message {
+              color: $LIGHT_SUBTITLE_TEXT;
+            }
+          }
+        }
+      }
+
+      .chat_list_item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 12px;
+        border-radius: 8px;
+        transition: 0.1s linear;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba($MINT_GREEN, 0.3);
+        }
+
+        &.online {
+          .receiver_image {
+            &::after {
+              background-color: rgba($MINT_GREEN, 1);
+            }
+          }
+        }
+
+        .receiver_image {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:after {
+            position: absolute;
+            z-index: 2;
+            content: '';
+            bottom: 0;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba($MINT_GREEN, 0);
+            transition: 0.3s ease;
+          }
+
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+        }
+
+        .receiver_info {
+          display: flex;
+          flex-direction: column;
+
+          .username {
+            color: $DARK_TITLE_TEXT;
+            font-size: 18px;
+          }
+
+          .last_message {
+            display: inline-block;
+            max-width: 20ch;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-size: 14px;
+            color: $DARK_SUBTITLE_TEXT;
+          }
+        }
+      }
+    }
+  }
+}

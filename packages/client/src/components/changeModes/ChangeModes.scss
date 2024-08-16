@@ -1,0 +1,32 @@
+@import '../../';
+
+.test_settings {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  gap: 5px;
+  transition: 0.3s ease;
+
+  &.light {
+    .test_light_mode,
+    .test_fullscreen_mode,
+    .test_site_name_mode {
+      color: $BLACK;
+      transition: 0.3s ease;
+    }
+  }
+
+  .test_light_mode,
+  .test_fullscreen_mode,
+  .test_site_name_mode {
+    border: none;
+    padding: 5px;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: $WHITE;
+    transition: 0.3s ease;
+  }
+}
