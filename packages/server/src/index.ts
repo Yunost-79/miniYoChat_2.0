@@ -13,11 +13,12 @@ import { app, httpServer } from './socket/socket';
 
 dotenv.config();
 
-const PORT = (process.env.PORT as string) || 7000;
+const SERVER_PORT = (process.env.SERVER_PORT as string) || 7000;
+const CLIENT_PORT = (process.env.CLIENT_PORT as string) || 5173;
 
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: `http://localhost:${CLIENT_PORT}`,
     credentials: true,
   })
 );
@@ -29,7 +30,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/users', userRoutes);
 
-httpServer.listen(7000, () => {
+httpServer.listen(SERVER_PORT, () => {
   connectToMongoDB();
-  console.log(`Server running on port: ${7000}`);
+  console.log(`Server running on port: ${SERVER_PORT}`);
 });

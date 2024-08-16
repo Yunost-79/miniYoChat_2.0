@@ -8,12 +8,14 @@ type User = {
   socketId: string;
 };
 
+const CLIENT_PORT = (process.env.CLIENT_PORT as string) || 5173;
+
 const app = express();
 const httpServer = createServer(app);
 
 export const io = new Server(httpServer, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: `http://localhost:${CLIENT_PORT}`,
     methods: ['GET', 'POST'],
     credentials: true,
   },
@@ -22,7 +24,7 @@ export const io = new Server(httpServer, {
 let onlineUsers: User[] = [];
 
 io.on('connection', (socket) => {
-  // console.log(`New socket connection: ${socket.id}`);
+  console.log(`New socket connection: ${socket.id}`);
 
   socket.on('addUser', (userId) => {
     addUser(socket, onlineUsers, userId);
